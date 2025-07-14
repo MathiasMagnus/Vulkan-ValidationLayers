@@ -106,6 +106,32 @@
             ]
         },
         {
+            "name": "jsoncpp",
+            "url": "https://github.com/open-source-parsers/jsoncpp.git",
+            "sub_dir": "jsoncpp",
+            "build_dir": "jsoncpp/build",
+            "install_dir": "jsoncpp/build/install",
+            "commit": "1.9.6",
+            "cmake_options": [
+                "-DCMAKE_POSITION_INDEPENDENT_CODE=ON",
+                "-DJSONCPP_WITH_TESTS=OFF",
+                "-DJSONCPP_WITH_POST_BUILD_UNITTEST=OFF",
+                "-DJSONCPP_WITH_WARNING_AS_ERROR=OFF",
+                "-DJSONCPP_WITH_PKGCONFIG_SUPPORT=OFF",
+                "-DBUILD_SHARED_LIBS=OFF",
+                "-DBUILD_STATIC_LIBS=ON",
+                "-DBUILD_OBJECT_LIBS=OFF"
+            ]
+        },
+        {
+            "name": "valijson",
+            "url": "https://github.com/tristanpenman/valijson.git",
+            "sub_dir": "valijson",
+            "build_dir": "valijson/build",
+            "install_dir": "valijson/build/install",
+            "commit": "v1.0.2"
+        },
+        {
             "name": "Vulkan-Profiles",
             "api": "vulkan",
             "url": "https://github.com/KhronosGroup/Vulkan-Profiles.git",
@@ -113,9 +139,26 @@
             "build_dir": "Vulkan-Profiles/build",
             "install_dir": "Vulkan-Profiles/build/install",
             "commit": "e0093bc4eabf6212194f96e76ab5e05549035da0",
-            "build_step": "skip",
             "optional": [
                 "tests"
+            ],
+            "deps": [
+                {
+                    "var_name": "VULKAN_HEADERS_INSTALL_DIR",
+                    "repo_name": "Vulkan-Headers"
+                },
+                {
+                    "var_name": "VULKAN_UTILITY_LIBRARIES_INSTALL_DIR",
+                    "repo_name": "Vulkan-Utility-Libraries"
+                },
+                {
+                    "var_name": "VALIJSON_INSTALL_DIR",
+                    "repo_name": "valijson"
+                },
+                {
+                    "var_name": "JSONCPP_INSTALL_DIR",
+                    "repo_name": "jsoncpp"
+                }
             ]
         }
     ],
@@ -126,6 +169,8 @@
         "SPIRV-Headers": "SPIRV_HEADERS_INSTALL_DIR",
         "SPIRV-Tools": "SPIRV_TOOLS_INSTALL_DIR",
         "googletest": "GOOGLETEST_INSTALL_DIR",
-        "mimalloc": "MIMALLOC_INSTALL_DIR"
+        "mimalloc": "MIMALLOC_INSTALL_DIR",
+        "jsoncpp": "JSONCPP_INSTALL_DIR",
+        "valijson": "VALIJSON_INSTALL_DIR"
     }
 }
